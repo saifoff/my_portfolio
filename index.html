@@ -20,15 +20,22 @@
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 leading-relaxed">
-  <nav class="fixed w-full z-30 bg-transparent px-6 py-4 flex items-center justify-between">
-    <a href="#home" class="text-xl font-semibold">Saiful Islam</a>
-    <div class="space-x-4">
-      <a href="#about" class="hover:underline">About</a>
-      <a href="#projects" class="hover:underline">Projects</a>
-      <a href="#publications" class="hover:underline">Publications</a>
-      <a href="#contact" class="hover:underline">Contact</a>
-    </div>
-  </nav>
+<!-- NAVBAR -->
+<nav class="fixed w-full z-30 bg-transparent px-6 py-4 flex items-center justify-between">
+  <a href="#home" class="text-xl font-semibold">Saiful Islam</a>
+
+  <!-- Mobile menu button (hamburger) -->
+  <button id="menu-btn" class="md:hidden text-3xl text-teal-300 focus:outline-none">☰</button>
+
+  <!-- Navigation links -->
+  <div id="menu" class="hidden md:flex space-x-4 flex-col md:flex-row absolute md:static right-6 top-16 md:top-auto bg-slate-800 md:bg-transparent rounded-xl md:rounded-none shadow-lg md:shadow-none glass md:glass-none p-4 md:p-0">
+    <a href="#about" class="hover:underline block py-1">About</a>
+    <a href="#projects" class="hover:underline block py-1">Projects</a>
+    <a href="#publications" class="hover:underline block py-1">Publications</a>
+    <a href="#contact" class="hover:underline block py-1">Contact</a>
+  </div>
+</nav>
+
 
   <main class="pt-24 max-w-4xl mx-auto px-6">
     <!-- HERO -->
@@ -210,5 +217,47 @@ window.addEventListener("scroll", () => {
   }
 });
   </script>
+  <script>
+  // Update footer year
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Hide mobile menu after clicking a link
+      if (window.innerWidth < 768) document.getElementById('menu').classList.add('hidden');
+    });
+  });
+
+  // Show More / Less toggle
+  function toggleExtras(buttonId, targetSelector) {
+    const extras = document.querySelectorAll(targetSelector);
+    const anyHidden = [...extras].some(el => el.classList.contains("hidden-item"));
+    extras.forEach(el => el.classList.toggle("hidden-item"));
+    document.getElementById(buttonId).textContent = anyHidden ? "Show Less" : "Show More";
+  }
+
+  document.getElementById('show-more-projects').addEventListener('click', () => toggleExtras('show-more-projects', '#project-list .extra'));
+  document.getElementById('show-more-pubs').addEventListener('click', () => toggleExtras('show-more-pubs', '#pub-list .extra'));
+
+  // Navbar color on scroll
+  const navbar = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) navbar.classList.add("nav-scrolled");
+    else navbar.classList.remove("nav-scrolled");
+  });
+
+  // Mobile menu toggle (hamburger)
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+  menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
 </body>
 </html>
