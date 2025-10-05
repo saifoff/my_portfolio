@@ -123,6 +123,7 @@
   <section id="projects" class="mt-12 py-8 border-t border-slate-800">
     <h2 class="text-2xl font-bold mb-4">Projects</h2>
     <div id="project-list" class="space-y-6">
+      <!-- Visible projects -->
       <article class="p-4 bg-slate-800 rounded-lg">
         <h3 class="font-semibold">RGBNet — Gallbladder Cancer Detection</h3>
         <p class="text-slate-400 mt-1">ROI-embedded Graph Neural Network for gallbladder cancer detection from ultrasound images. Published in Results in Engineering (2025).</p>
@@ -140,6 +141,19 @@
         <p class="text-slate-400 mt-1">Exploring wellbeing, achievements and social connections using Python.</p>
         <p class="text-sm mt-2"><a href="https://github.com/saifoff/lifestyle_analysis" class="text-teal-300">View on GitHub</a></p>
       </article>
+
+      <!-- Hidden projects -->
+      <article class="p-4 bg-slate-800 rounded-lg hidden extra-project">
+        <h3 class="font-semibold">Fake News Detection</h3>
+        <p class="text-slate-400 mt-1">Machine learning pipeline for Bangla fake news classification.</p>
+        <p class="text-sm mt-2"><a href="https://github.com/saifoff/fake_news_detection" class="text-teal-300">View on GitHub</a></p>
+      </article>
+
+      <article class="p-4 bg-slate-800 rounded-lg hidden extra-project">
+        <h3 class="font-semibold">AI Resume Screener</h3>
+        <p class="text-slate-400 mt-1">NLP-powered tool to parse and rank resumes automatically.</p>
+        <p class="text-sm mt-2"><a href="https://github.com/saifoff/ai_resume_screener" class="text-teal-300">View on GitHub</a></p>
+      </article>
     </div>
 
     <div class="mt-4 text-center">
@@ -150,16 +164,71 @@
   <!-- PUBLICATIONS -->
   <section id="publications" class="mt-12 py-8 border-t border-slate-800">
     <h2 class="text-2xl font-bold mb-4">Publications</h2>
-    <ul id="pub-list" class="list-disc ml-5 text-slate-400 space-y-2">
-      <li>A region-of-interest embedded GNN for gallbladder cancer detection — Results in Engineering (2025). <a href="https://doi.org/10.1016/j.rineng.2025.104624" class="text-teal-300">DOI</a></li>
-      <li>An Efficient Framework for Transliteration Sentence Identification — ICCCNT 2024. <a href="https://doi.org/10.1109/ICCCNT61001.2024.10725039" class="text-teal-300">IEEE</a></li>
-      <li>NewsNet: Bangla news categorization — ICCCNT 2024. <a href="#" class="text-teal-300">Paper</a></li>
+    <ul id="pub-list" class="text-slate-300 space-y-4">
+      <!-- Visible Publications -->
+      <li class="pub-item">
+        <div class="cursor-pointer">
+          <strong>RGBNet — Gallbladder Cancer Detection</strong> <br>
+          <span class="text-slate-400">Results in Engineering, 2025</span> —
+          <a href="https://doi.org/10.1016/j.rineng.2025.104624" target="_blank" class="text-teal-300">DOI</a>
+        </div>
+        <p class="pub-desc hidden text-sm text-slate-400 mt-2">Introduces a region-of-interest embedded Graph Neural Network for gallbladder cancer detection from ultrasound images, focusing on medical imaging interpretability.</p>
+      </li>
+
+      <li class="pub-item">
+        <div class="cursor-pointer">
+          <strong>Transliteration Sentence Identification</strong> <br>
+          <span class="text-slate-400">ICCCNT, 2024</span> —
+          <a href="https://doi.org/10.1109/ICCCNT61001.2024.10725039" target="_blank" class="text-teal-300">IEEE</a>
+        </div>
+        <p class="pub-desc hidden text-sm text-slate-400 mt-2">Proposes an efficient framework to identify transliterated sentences in multilingual contexts using linguistic and statistical features.</p>
+      </li>
+
+      <li class="pub-item">
+        <div class="cursor-pointer">
+          <strong>NewsNet: Bangla News Categorization</strong> <br>
+          <span class="text-slate-400">ICCCNT, 2024</span> —
+          <a href="#" target="_blank" class="text-teal-300">Paper</a>
+        </div>
+        <p class="pub-desc hidden text-sm text-slate-400 mt-2">Develops a deep learning model for classifying Bangla news articles into categories with improved accuracy over baseline methods.</p>
+      </li>
+
+      <!-- Hidden Publications -->
+      <li class="pub-item hidden extra-pub">
+        <div class="cursor-pointer">
+          <strong>Explainable Deep Learning in Medical Imaging</strong> <br>
+          <span class="text-slate-400">Journal of AI Research, 2025</span> —
+          <a href="#" target="_blank" class="text-teal-300">Paper</a>
+        </div>
+        <p class="pub-desc hidden text-sm text-slate-400 mt-2">Explores techniques to improve interpretability in medical imaging deep learning applications using XAI frameworks.</p>
+      </li>
     </ul>
 
     <div class="mt-4 text-center">
       <button id="show-more-pubs" class="px-4 py-2 bg-teal-500 text-slate-900 rounded-md">Show More</button>
     </div>
   </section>
+
+  <script>
+    // Show more projects
+    document.getElementById("show-more-projects").addEventListener("click", function () {
+      document.querySelectorAll(".extra-project").forEach(el => el.classList.toggle("hidden"));
+      this.textContent = this.textContent === "Show More" ? "Show Less" : "Show More";
+    });
+
+    // Show more publications
+    document.getElementById("show-more-pubs").addEventListener("click", function () {
+      document.querySelectorAll(".extra-pub").forEach(el => el.classList.toggle("hidden"));
+      this.textContent = this.textContent === "Show More" ? "Show Less" : "Show More";
+    });
+
+    // Expand/collapse publication descriptions
+    document.querySelectorAll(".pub-item").forEach(item => {
+      item.querySelector("div").addEventListener("click", () => {
+        item.querySelector(".pub-desc").classList.toggle("hidden");
+      });
+    });
+  </script>
 
   <!-- CONTACT -->
   <section id="contact" class="mt-12 py-8 border-t border-slate-800 mb-16">
