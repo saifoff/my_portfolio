@@ -182,7 +182,7 @@
 </footer>
 
 <script>
-  // Year
+  // Footer year
   document.getElementById('year').innerText = new Date().getFullYear();
 
   // Navbar scroll effect
@@ -194,7 +194,9 @@
   // Mobile menu toggle
   const menuBtn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu");
-  menuBtn.addEventListener("click", () => {
+
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent immediate close
     menu.classList.toggle("hidden");
   });
 
@@ -203,6 +205,13 @@
     link.addEventListener('click', () => {
       if (window.innerWidth < 768) menu.classList.add('hidden');
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
   });
 </script>
 
