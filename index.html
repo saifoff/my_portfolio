@@ -196,21 +196,65 @@
   const menu = document.getElementById("menu");
 
   menuBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent immediate close
+    e.stopPropagation();
     menu.classList.toggle("hidden");
-  });
-
-  // Close mobile menu when clicking a link
-  document.querySelectorAll('#menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 768) menu.classList.add('hidden');
-    });
   });
 
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
       menu.classList.add("hidden");
+    }
+  });
+
+  // Close when clicking a link (on mobile)
+  document.querySelectorAll('#menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 768) menu.classList.add('hidden');
+    });
+  });
+
+  // === SHOW MORE / LESS for Projects ===
+  const projectList = document.getElementById('project-list');
+  const projectButton = document.getElementById('show-more-projects');
+  const allProjects = projectList.querySelectorAll('article');
+
+  if (allProjects.length > 3) {
+    allProjects.forEach((p, i) => { if (i >= 3) p.classList.add('hidden-item'); });
+  } else {
+    projectButton.classList.add('hidden');
+  }
+
+  projectButton.addEventListener('click', () => {
+    const hiddenProjects = projectList.querySelectorAll('.hidden-item');
+    if (hiddenProjects.length > 0) {
+      hiddenProjects.forEach(p => p.classList.remove('hidden-item'));
+      projectButton.textContent = "Show Less";
+    } else {
+      allProjects.forEach((p, i) => { if (i >= 3) p.classList.add('hidden-item'); });
+      projectButton.textContent = "Show More";
+    }
+  });
+
+  // === SHOW MORE / LESS for Publications ===
+  const pubList = document.getElementById('pub-list');
+  const pubButton = document.getElementById('show-more-pubs');
+  const allPubs = pubList.querySelectorAll('li');
+
+  if (allPubs.length > 2) {
+    allPubs.forEach((p, i) => { if (i >= 2) p.classList.add('hidden-item'); });
+  } else {
+    pubButton.classList.add('hidden');
+  }
+
+  pubButton.addEventListener('click', () => {
+    const hiddenPubs = pubList.querySelectorAll('.hidden-item');
+    if (hiddenPubs.length > 0) {
+      hiddenPubs.forEach(p => p.classList.remove('hidden-item'));
+      pubButton.textContent = "Show Less";
+    } else {
+      allPubs.forEach((p, i) => { if (i >= 2) p.classList.add('hidden-item'); });
+      pubButton.textContent = "Show More";
     }
   });
 </script>
