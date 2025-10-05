@@ -1,196 +1,219 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saiful Islam - Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0ea5a4" />
+  <title>Saiful Islam — Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    :root { --accent:#0ea5a4; }
+    .glass { background:rgba(255,255,255,0.06); backdrop-filter:blur(6px); }
+    .hidden-item { display:none; }
+
     .nav-scrolled {
-      background-color: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(6px);
+      background: rgba(34, 61, 125, 0.95);
+      backdrop-filter: blur(100px);
+      transition: background 0.3s ease;
     }
-    .description {
-      transition: all 0.3s ease;
+
+    /* Smooth slide for mobile menu */
+    #menu {
+      transition: all 0.3s ease-in-out;
     }
   </style>
 </head>
-<body class="bg-slate-900 text-white">
 
-  <!-- === Navbar === -->
-  <nav class="fixed w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between">
-    <a href="#home" class="text-xl font-semibold">Saiful Islam</a>
+<body class="bg-slate-900 text-slate-100 leading-relaxed">
 
-    <!-- Hamburger button -->
-    <button id="menu-btn" class="md:hidden text-3xl text-teal-300 focus:outline-none">
-      ☰
-    </button>
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between">
+  <a href="#home" class="text-xl font-semibold">Saiful Islam</a>
 
-    <!-- Navigation menu -->
-    <div id="menu"
-         class="hidden md:flex md:space-x-6 flex-col md:flex-row fixed md:static right-4 top-16 md:top-auto
-                w-3/4 md:w-auto bg-slate-800 md:bg-transparent rounded-xl md:rounded-none shadow-lg md:shadow-none
-                p-4 md:p-0 z-50 transition-all duration-300 ease-in-out">
-      <a href="#about" class="hover:underline block py-1">About</a>
-      <a href="#projects" class="hover:underline block py-1">Projects</a>
-      <a href="#publications" class="hover:underline block py-1">Publications</a>
-      <a href="#contact" class="hover:underline block py-1">Contact</a>
-    </div>
-  </nav>
+  <!-- Hamburger Button -->
+  <button id="menu-btn" class="md:hidden text-3xl text-teal-300 focus:outline-none">
+    ☰
+  </button>
 
-  <!-- === Hero Section === -->
-  <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4">
-    <div class="w-40 h-40 rounded-full overflow-hidden mb-6 shadow-lg border-4 border-teal-400">
-      <img id="profile-photo" src="saiful_islam_pr.png" alt="Saiful Islam" class="w-full h-full object-cover" />
-    </div>
-    <h1 class="text-4xl font-bold mb-2">Saiful Islam</h1>
-    <p class="text-lg text-gray-300">Machine Learning Engineer & Researcher</p>
-  </section>
+  <!-- Navigation Menu -->
+  <div id="menu"
+       class="hidden md:flex md:space-x-4 flex-col md:flex-row fixed md:static right-4 top-16 md:top-auto
+              w-3/4 md:w-auto bg-slate-800 md:bg-transparent rounded-xl md:rounded-none shadow-lg md:shadow-none glass md:glass-none
+              p-4 md:p-0 z-50 transition-all duration-300 ease-in-out">
+    <a href="#about" class="hover:underline block py-1">About</a>
+    <a href="#projects" class="hover:underline block py-1">Projects</a>
+    <a href="#publications" class="hover:underline block py-1">Publications</a>
+    <a href="#contact" class="hover:underline block py-1">Contact</a>
+  </div>
+</nav>
 
-  <!-- === About Section === -->
-  <section id="about" class="py-16 bg-slate-800">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-teal-300">About Me</h2>
-      <p class="text-gray-300 leading-relaxed">
-        I am a passionate Machine Learning Engineer and Researcher focusing on Computer Vision, Health Informatics, and Artificial Intelligence.
-        I have hands-on experience developing segmentation and classification models using deep learning architectures like U-Net, VGG16, and ResNet.
-      </p>
-    </div>
-  </section>
+<!-- MAIN -->
+<main class="pt-24 max-w-4xl mx-auto px-6">
 
-  <!-- === Projects Section === -->
-  <section id="projects" class="py-16">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center text-teal-300">Projects</h2>
+  <!-- HERO -->
+  <section id="home" class="min-h-[60vh] flex items-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="flex justify-center md:justify-end">
+        <div class="w-44 h-44 md:w-52 md:h-52 rounded-xl overflow-hidden ring-2 ring-teal-400 glass">
+          <img id="profile-photo" src="saiful_islam_pr.png" alt="Saiful Islam" class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+          Hi, I'm <span class="text-teal-400">Saiful Islam</span>
+        </h1>
+        <p class="text-lg text-slate-300">
+          BSc in Computer Science & Engineering. AI / ML researcher — focused on medical imaging, graph neural networks, and NLP.
+          I build reproducible research and production-ready ML solutions.
+        </p>
 
-      <div id="project-list" class="grid md:grid-cols-3 gap-6">
-        <article class="bg-slate-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-lg mb-2">AutoOral: Oral Disease Detection</h3>
-          <p class="text-gray-300 text-sm">Developed a CNN-based model for oral disease detection using custom dataset and segmentation models.</p>
-        </article>
-        <article class="bg-slate-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-lg mb-2">Hybrid Attention U-Net</h3>
-          <p class="text-gray-300 text-sm">Implemented a U-Net with scale-attention mechanism for precise medical image segmentation.</p>
-        </article>
-        <article class="bg-slate-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-lg mb-2">AI Model for Diabetic Retinopathy</h3>
-          <p class="text-gray-300 text-sm">Built a transfer learning model using ResNet34 for DR classification, optimizing with Dice + BCE loss.</p>
-        </article>
+        <div class="mt-6 flex gap-3">
+          <a href="#projects" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold">Projects</a>
+          <a href="#publications" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold">Publications</a>
+          <a href="#contact" class="px-4 py-2 rounded-md border border-slate-700">Get in touch</a>
+        </div>
+
+        <ul class="mt-6 text-sm text-slate-400 space-y-1">
+          <li><strong>Email:</strong> <a href="mailto:saifulttnn@gmail.com" class="text-teal-300">saifulttnn@gmail.com</a></li>
+          <li><strong>Location:</strong> Rome, Italy</li>
+        </ul>
+
+        <div class="mt-6 flex gap-2.5">
+          <a href="https://github.com/saifoff" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">GitHub</a>
+          <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">LinkedIn</a>
+          <a href="https://www.facebook.com/saif.6053/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">Facebook</a>
+          <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">ResearchGate</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- === Publications Section === -->
-  <section id="publications" class="py-16 bg-slate-800">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center text-teal-300">Publications</h2>
+  <!-- ABOUT -->
+  <section id="about" class="mt-12 py-8 border-t border-slate-800">
+    <h2 class="text-2xl font-bold mb-4">About</h2>
+    <p class="text-slate-300">
+      Driven by a passion for technology and innovation, I solve real-world challenges through research and development.
+      I graduated with a BSc in Computer Science and Engineering from Daffodil International University.
+      My recent work focuses on medical imaging using graph neural networks and interpretable deep learning.
+    </p>
 
-      <ul id="pub-list" class="space-y-4">
-        <!-- Publication 1 -->
-        <li class="bg-slate-700 p-4 rounded-lg cursor-pointer transition hover:bg-slate-600">
-          <div class="flex justify-between items-center">
-            <div>
-              <h3 class="font-semibold text-lg">Deep Learning for Oral Disease Classification</h3>
-              <p class="text-sm text-gray-300">Results in Engineering, 2024</p>
-            </div>
-            <a href="https://doi.org/10.xxxx/xxxx" target="_blank" class="text-teal-400 underline">View Paper</a>
-          </div>
-          <p class="description hidden mt-3 text-gray-300">
-            This study presents a CNN-based model for multi-class oral disease classification, achieving superior performance through optimized preprocessing and transfer learning.
-          </p>
-        </li>
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-semibold">Education</h3>
+        <ul class="text-slate-400 mt-2 space-y-2">
+          <li><strong>MSc — Data Science</strong> — Sapienza University of Rome (Running)</li>
+          <li><strong>BSc — Computer Science & Engineering</strong> — Daffodil International University (CGPA 3.74/4)</li>
+          <li><strong>HSC — Milestone College</strong> — Science (GPA 5/5)</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold">Experience & Roles</h3>
+        <ul class="text-slate-400 mt-2 space-y-2">
+          <li><strong>Research Member</strong>, Health Informatics Research Lab (Sep 2023 — Mar 2025)</li>
+          <li><strong>Research Assistant</strong>, APURBA-DIU Research & Development Lab (Jul 2024 — Sep 2024)</li>
+        </ul>
+      </div>
+    </div>
 
-        <!-- Publication 2 -->
-        <li class="bg-slate-700 p-4 rounded-lg cursor-pointer transition hover:bg-slate-600">
-          <div class="flex justify-between items-center">
-            <div>
-              <h3 class="font-semibold text-lg">A Hybrid Attention U-Net for Medical Image Segmentation</h3>
-              <p class="text-sm text-gray-300">Biomedical Signal Processing and Control, 2023</p>
-            </div>
-            <a href="https://doi.org/10.xxxx/yyyy" target="_blank" class="text-teal-400 underline">View Paper</a>
-          </div>
-          <p class="description hidden mt-3 text-gray-300">
-            Introduced a scale-attention mechanism integrated with U-Net architecture, improving segmentation accuracy for various medical imaging datasets.
-          </p>
-        </li>
+    <h3 class="mt-6 font-semibold">Skills</h3>
+    <p class="text-slate-400">Python, ML (CNN, GNN), Data Analysis, LaTeX, Git</p>
+  </section>
 
-        <!-- Publication 3 -->
-        <li class="bg-slate-700 p-4 rounded-lg cursor-pointer transition hover:bg-slate-600">
-          <div class="flex justify-between items-center">
-            <div>
-              <h3 class="font-semibold text-lg">Transfer Learning in Computer Vision for Health Informatics</h3>
-              <p class="text-sm text-gray-300">IEEE Access, 2022</p>
-            </div>
-            <a href="https://doi.org/10.xxxx/zzzz" target="_blank" class="text-teal-400 underline">View Paper</a>
-          </div>
-          <p class="description hidden mt-3 text-gray-300">
-            This paper reviews transfer learning techniques in health informatics, focusing on explainability and real-world model deployment.
-          </p>
-        </li>
-      </ul>
+  <!-- PROJECTS -->
+  <section id="projects" class="mt-12 py-8 border-t border-slate-800">
+    <h2 class="text-2xl font-bold mb-4">Projects</h2>
+    <div id="project-list" class="space-y-6">
+      <article class="p-4 bg-slate-800 rounded-lg">
+        <h3 class="font-semibold">RGBNet — Gallbladder Cancer Detection</h3>
+        <p class="text-slate-400 mt-1">ROI-embedded Graph Neural Network for gallbladder cancer detection from ultrasound images. Published in Results in Engineering (2025).</p>
+        <p class="text-sm mt-2"><a href="https://doi.org/10.1016/j.rineng.2025.104624" class="text-teal-300">DOI / paper</a></p>
+      </article>
+
+      <article class="p-4 bg-slate-800 rounded-lg">
+        <h3 class="font-semibold">Colorectal_segcal</h3>
+        <p class="text-slate-400 mt-1">Multi-head deep learning for histopathology image segmentation & classification.</p>
+        <p class="text-sm mt-2"><a href="https://github.com/saifoff/Colorectal_segcal" class="text-teal-300">View on GitHub</a></p>
+      </article>
+
+      <article class="p-4 bg-slate-800 rounded-lg">
+        <h3 class="font-semibold">Lifestyle Analysis</h3>
+        <p class="text-slate-400 mt-1">Exploring wellbeing, achievements and social connections using Python.</p>
+        <p class="text-sm mt-2"><a href="https://github.com/saifoff/lifestyle_analysis" class="text-teal-300">View on GitHub</a></p>
+      </article>
+    </div>
+
+    <div class="mt-4 text-center">
+      <button id="show-more-projects" class="px-4 py-2 bg-teal-500 text-slate-900 rounded-md">Show More</button>
     </div>
   </section>
 
-  <!-- === Contact Section === -->
-  <section id="contact" class="py-16">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-teal-300">Contact</h2>
-      <p class="text-gray-300">Feel free to reach out for collaborations or research discussions.</p>
-      <p class="mt-4 text-teal-400">📧 saiful.islam@email.com</p>
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="mt-12 py-8 border-t border-slate-800">
+    <h2 class="text-2xl font-bold mb-4">Publications</h2>
+    <ul id="pub-list" class="list-disc ml-5 text-slate-400 space-y-2">
+      <li>A region-of-interest embedded GNN for gallbladder cancer detection — Results in Engineering (2025). <a href="https://doi.org/10.1016/j.rineng.2025.104624" class="text-teal-300">DOI</a></li>
+      <li>An Efficient Framework for Transliteration Sentence Identification — ICCCNT 2024. <a href="https://doi.org/10.1109/ICCCNT61001.2024.10725039" class="text-teal-300">IEEE</a></li>
+      <li>NewsNet: Bangla news categorization — ICCCNT 2024. <a href="#" class="text-teal-300">Paper</a></li>
+    </ul>
+
+    <div class="mt-4 text-center">
+      <button id="show-more-pubs" class="px-4 py-2 bg-teal-500 text-slate-900 rounded-md">Show More</button>
     </div>
   </section>
 
-  <!-- === Footer === -->
-  <footer class="py-6 bg-slate-900 text-center text-gray-400 text-sm">
-    © <span id="year"></span> Saiful Islam. All rights reserved.
-  </footer>
+  <!-- CONTACT -->
+  <section id="contact" class="mt-12 py-8 border-t border-slate-800 mb-16">
+    <h2 class="text-2xl font-bold mb-4">Contact</h2>
+    <p class="text-slate-400">
+      Email me at <a href="mailto:saifulttnn@gmail.com" class="text-teal-300">saifulttnn@gmail.com</a> or connect on LinkedIn / GitHub.
+    </p>
 
-  <!-- === Scripts === -->
-  <script>
-    // Footer year
-    document.getElementById("year").innerText = new Date().getFullYear();
+    <div class="mt-6 flex gap-2.5">
+      <a href="https://github.com/saifoff" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">GitHub</a>
+      <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">LinkedIn</a>
+      <a href="https://www.facebook.com/saif.6053/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">Facebook</a>
+      <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">ResearchGate</a>
+    </div>
+  </section>
+</main>
 
-    // Navbar scroll effect
-    const navbar = document.querySelector("nav");
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("nav-scrolled", window.scrollY > 50);
+<footer class="text-center py-6 text-slate-500">
+  © <span id="year"></span> Saiful Islam — Built with ❤️ • <a href="#home" class="underline">Top</a>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // Navbar scroll effect
+  const navbar = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("nav-scrolled", window.scrollY > 50);
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent immediate close
+    menu.classList.toggle("hidden");
+  });
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('#menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 768) menu.classList.add('hidden');
     });
+  });
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menu-btn");
-    const menu = document.getElementById("menu");
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+</script>
 
-    menuBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      menu.classList.toggle("hidden");
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-        menu.classList.add("hidden");
-      }
-    });
-
-    // Close menu when link is clicked
-    document.querySelectorAll("#menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth < 768) menu.classList.add("hidden");
-      });
-    });
-
-    // Publication description toggle
-    document.querySelectorAll("#pub-list li").forEach(item => {
-      item.addEventListener("click", (e) => {
-        if (e.target.tagName.toLowerCase() === "a") return;
-        const desc = item.querySelector(".description");
-        desc.classList.toggle("hidden");
-      });
-    });
-  </script>
 </body>
 </html>
