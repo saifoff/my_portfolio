@@ -3,320 +3,413 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0ea5a4" />
-  <title>Saiful Islam — Portfolio</title>
+  <meta name="theme-color" content="#0b1120" />
+  <title>Saiful Islam — Machine Learning Engineer & Researcher</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --accent:#0ea5a4; }
-    .glass { background:rgba(255,255,255,0.06); backdrop-filter:blur(6px); }
-    .hidden-item { display:none; }
-
-    .nav-scrolled {
-      background: rgba(34, 61, 125, 0.95);
-      backdrop-filter: blur(100px);
-      transition: background 0.3s ease;
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(99, 102, 241, 0.15), transparent 30%),
+        #020617;
     }
-
-    /* Smooth slide for mobile menu */
-    #menu {
-      transition: all 0.3s ease-in-out;
+    .glass {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .nav-elevated {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .collapsible {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+    .collapsible.open {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .abstract {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 320ms ease, opacity 280ms ease, margin-top 280ms ease;
+      margin-top: 0;
+    }
+    .abstract.open {
+      opacity: 1;
+      margin-top: 0.75rem;
     }
   </style>
 </head>
-
-<body class="bg-slate-900 text-slate-100 leading-relaxed">
-
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between">
-  <a href="#home" class="text-xl font-semibold">Saiful Islam</a>
-
-  <!-- Hamburger Button -->
-  <button id="menu-btn" class="md:hidden text-3xl text-teal-300 focus:outline-none">
-    ☰
-  </button>
-
-  <!-- Navigation Menu -->
-  <div id="menu"
-       class="hidden md:flex md:space-x-4 flex-col md:flex-row fixed md:static right-4 top-16 md:top-auto
-              w-3/4 md:w-auto bg-slate-800 md:bg-transparent rounded-xl md:rounded-none shadow-lg md:shadow-none glass md:glass-none
-              p-4 md:p-0 z-50 transition-all duration-300 ease-in-out">
-    <a href="#about" class="hover:underline block py-1">About</a>
-    <a href="#projects" class="hover:underline block py-1">Projects</a>
-    <a href="#publications" class="hover:underline block py-1">Publications</a>
-    <a href="#contact" class="hover:underline block py-1">Contact</a>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<main class="pt-24 max-w-4xl mx-auto px-6">
-
-  <!-- HERO -->
-  <section id="home" class="min-h-[60vh] flex items-center">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-      <div class="flex justify-center md:justify-end">
-        <div class="w-44 h-44 md:w-52 md:h-52 rounded-xl overflow-hidden ring-2 ring-teal-400 glass">
-          <img id="profile-photo" src="saiful_islam_pr.png" alt="Saiful Islam" class="w-full h-full object-cover" />
+<body class="text-slate-100 antialiased">
+  <nav id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="mt-4 flex items-center justify-between rounded-2xl px-4 py-3 glass transition-all duration-300">
+        <a href="#home" class="text-base md:text-lg font-semibold tracking-tight">
+          Saiful Islam
+        </a>
+        <button id="menu-btn" class="md:hidden rounded-lg border border-slate-700 px-3 py-1.5 text-lg text-slate-200" aria-label="Toggle Menu">
+          ☰
+        </button>
+        <div id="menu" class="hidden md:flex md:items-center gap-1 md:gap-2 absolute md:static top-[72px] right-5 md:right-auto w-[82%] md:w-auto rounded-xl md:rounded-none p-3 md:p-0 glass md:bg-transparent md:border-0">
+          <a href="#about" class="rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800/70 transition">About</a>
+          <a href="#projects" class="rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Projects</a>
+          <a href="#publications" class="rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Publications</a>
+          <a href="#contact" class="rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Contact</a>
         </div>
       </div>
-      <div class="md:col-span-2">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-          Hi, I'm <span class="text-teal-400">Saiful Islam</span>
-        </h1>
-        <p class="text-lg text-slate-300">
-          A Computer Science graduate and an AI/ML enthusiast passionate about exploring how data and algorithms can solve real-world problems.
-          I enjoy learning, experimenting, and sharing knowledge through research.
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-6xl px-5 pb-20 pt-28 md:pt-32">
+    <section id="home" class="reveal min-h-[72vh] flex items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <p class="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-300">
+            MSc in Data Science · Sapienza University of Rome
+          </p>
+          <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+            Machine Learning Engineer exploring AI for
+            <span class="bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent">real-world problems and research-driven solutions</span>.
+          </h1>
+          <p class="mt-5 max-w-2xl text-slate-300 text-base md:text-lg">
+            I am Saiful Islam, a Machine Learning Engineer and Researcher focused on Deep Learning, Graph Neural Networks, Explainable AI, and Computer Vision. I work on rigorous, impact-oriented systems with a strong publication record in medical AI.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="rounded-lg bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-lg shadow-cyan-500/20 hover:-translate-y-0.5 hover:bg-cyan-300 transition">View Projects</a>
+            <a href="#publications" class="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:border-cyan-300 hover:text-cyan-200 transition">View Publications</a>
+            <a href="#contact" class="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:border-indigo-300 hover:text-indigo-200 transition">Contact Me</a>
+            <a href="#" class="rounded-lg border border-indigo-400/40 bg-indigo-500/10 px-5 py-2.5 text-sm font-semibold text-indigo-200 hover:bg-indigo-500/20 transition">Download CV</a>
+          </div>
+          <ul class="mt-6 text-sm text-slate-400 space-y-1">
+            <li><strong class="text-slate-200">Email:</strong> <a href="mailto:saifulttnn@gmail.com" class="text-cyan-300 hover:text-cyan-200 transition">saifulttnn@gmail.com</a></li>
+            <li><strong class="text-slate-200">Location:</strong> Rome, Italy</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            <a href="https://github.com/saifoff" target="_blank" class="rounded-md border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200 hover:border-cyan-400/50 hover:text-cyan-200 transition">GitHub</a>
+            <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="rounded-md border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200 hover:border-cyan-400/50 hover:text-cyan-200 transition">LinkedIn</a>
+            <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="rounded-md border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200 hover:border-cyan-400/50 hover:text-cyan-200 transition">ResearchGate</a>
+            <a href="mailto:saifulttnn@gmail.com" class="rounded-md border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200 hover:border-cyan-400/50 hover:text-cyan-200 transition">Email</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+          <div class="relative">
+            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-cyan-500/20 to-indigo-500/20 blur-2xl"></div>
+            <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-3xl overflow-hidden border border-slate-700 glass shadow-xl shadow-slate-950/60">
+              <img id="profile-photo" src="saiful_islam_pr.png" alt="Saiful Islam" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="reveal mt-16 border-t border-slate-800/90 pt-14">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-semibold tracking-tight">About</h2>
+        <p class="mt-4 text-slate-300">
+          I am passionate about developing AI systems that are technically robust, interpretable, and clinically meaningful. With a BSc in Computer Science and Engineering and ongoing MSc studies in Data Science at Sapienza University of Rome, I focus on solving high-impact problems in medical imaging through deep learning and graph-based methods.
         </p>
+      </div>
 
-        <div class="mt-6 flex gap-3">
-          <a href="#projects" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold">Projects</a>
-          <a href="#publications" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold">Publications</a>
-          <a href="#contact" class="px-4 py-2 rounded-md border border-slate-700">Get in touch</a>
+      <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 hover:border-slate-700 transition">
+          <h3 class="text-lg font-semibold">Education</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-300">
+            <li><span class="font-medium text-slate-100">MSc — Data Science</span><br /><span class="text-slate-400">Sapienza University of Rome · Ongoing</span></li>
+            <li><span class="font-medium text-slate-100">BSc — Computer Science & Engineering</span><br /><span class="text-slate-400">Daffodil International University · CGPA 3.74 / 4.00</span></li>
+            <li><span class="font-medium text-slate-100">HSC — Science</span><br /><span class="text-slate-400">Milestone College · GPA 5.00 / 5.00</span></li>
+          </ul>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 hover:border-slate-700 transition">
+          <h3 class="text-lg font-semibold">Research Experience</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-300">
+            <li><span class="font-medium text-slate-100">Research Member</span><br /><span class="text-slate-400">Health Informatics Research Lab · Sep 2023 - Mar 2025</span></li>
+            <li><span class="font-medium text-slate-100">Research Assistant</span><br /><span class="text-slate-400">APURBA-DIU Research & Development Lab · Jul 2024 - Sep 2024</span></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="mt-8 rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+        <h3 class="text-lg font-semibold">Core Skills</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">Medical Imaging</span>
+          <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">Deep Learning</span>
+          <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">Graph Neural Networks</span>
+          <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">Explainable AI</span>
+          <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">Computer Vision</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">Python</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">PyTorch</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">TensorFlow</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">Data Analysis</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">LaTeX</span>
+          <span class="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-xs text-slate-200">Git</span>
         </div>
+      </div>
+    </section>
 
-        <ul class="mt-6 text-sm text-slate-400 space-y-1">
-          <li><strong>Email:</strong> <a href="mailto:saifulttnn@gmail.com" class="text-teal-300">saifulttnn@gmail.com</a></li>
-          <li><strong>Location:</strong> Rome, Italy</li>
-        </ul>
-
-        <div class="mt-6 flex gap-2.5">
-          <a href="https://github.com/saifoff" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">GitHub</a>
-          <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">LinkedIn</a>
-          <a href="https://www.facebook.com/saif.6053/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">Facebook</a>
-          <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">ResearchGate</a>
+    <section id="projects" class="reveal mt-16 border-t border-slate-800/90 pt-14">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-semibold tracking-tight">Projects</h2>
+          <p class="mt-2 text-slate-400">Applied ML projects with emphasis on practical impact and reproducibility.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="mt-12 py-8 border-t border-slate-800">
-    <h2 class="text-2xl font-bold mb-4">About</h2>
-    <p class="text-slate-300">
-     I’m passionate about exploring how artificial intelligence can be used to solve meaningful, real-world problems. 
-     I hold a BSc in Computer Science and Engineering from Daffodil International University, 
-     and I’m currently continuing my academic and research journey in Data Science at Sapienza University of Rome.
-     My work mainly focuses on medical imaging, graph neural networks, and interpretable deep learning, with an aim to make AI more transparent and impactful. 
-     I enjoy learning, collaborating, and contributing to research that bridges innovation and real-world application.
-    </p>
+      <div id="project-list" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:-translate-y-1 hover:border-cyan-400/40 transition duration-300">
+          <h3 class="text-lg font-semibold leading-snug">Simultaneous Histopathology Image Segmentation and Classification with EBHI-Seg Dataset</h3>
+          <p class="mt-3 text-sm text-slate-400">Performed simultaneous segmentation and classification on 4,456 EBHI-Seg images using deep learning to identify six differentiation stages.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Deep Learning</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Medical Imaging</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Computer Vision</span>
+          </div>
+          <a href="https://github.com/saifoff/Colorectal_segcal" target="_blank" class="mt-4 inline-block text-sm font-medium text-cyan-300 hover:text-cyan-200 transition">View on GitHub →</a>
+        </article>
 
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:-translate-y-1 hover:border-cyan-400/40 transition duration-300">
+          <h3 class="text-lg font-semibold">Lifestyle Analysis</h3>
+          <p class="mt-3 text-sm text-slate-400">Exploring wellbeing, achievements, and social connections using Python with a data-centric analysis pipeline.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Python</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Data Analysis</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Visualization</span>
+          </div>
+          <a href="https://github.com/saifoff/lifestyle_analysis" target="_blank" class="mt-4 inline-block text-sm font-medium text-cyan-300 hover:text-cyan-200 transition">View on GitHub →</a>
+        </article>
+
+        <article class="collapsible extra-project md:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/70 p-5 hover:-translate-y-1 hover:border-cyan-400/40 transition duration-300">
+          <h3 class="text-lg font-semibold">YouTube Trend Analyzer</h3>
+          <p class="mt-3 text-sm text-slate-400">Flask app for analyzing YouTube trending videos with engagement metrics and AI-powered content suggestions using Google Gemini.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Flask</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">NLP</span>
+            <span class="rounded-full border border-slate-600 px-2.5 py-1 text-xs text-slate-300">Google Gemini</span>
+          </div>
+          <a href="https://github.com/saifoff/trend_analyzer" target="_blank" class="mt-4 inline-block text-sm font-medium text-cyan-300 hover:text-cyan-200 transition">View on GitHub →</a>
+        </article>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button id="show-more-projects" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:border-cyan-400/40 hover:text-cyan-200 transition">Show More</button>
+      </div>
+    </section>
+
+    <section id="publications" class="reveal mt-16 border-t border-slate-800/90 pt-14">
       <div>
-        <h3 class="font-semibold">Education</h3>
-        <ul class="text-slate-400 mt-2 space-y-2">
-          <li><strong>MSc — Data Science</strong> — Sapienza University of Rome (Running)</li>
-          <li><strong>BSc — Computer Science & Engineering</strong> — Daffodil International University (CGPA 3.74/4)</li>
-          <li><strong>HSC — Milestone College</strong> — Science (GPA 5/5)</li>
-        </ul>
+        <h2 class="text-3xl font-semibold tracking-tight">Publications</h2>
+        <p class="mt-2 text-slate-400">Peer-reviewed research with strong focus on Q1 journal outcomes in medical AI.</p>
       </div>
-      <div>
-        <h3 class="font-semibold">Experience & Roles</h3>
-        <ul class="text-slate-400 mt-2 space-y-2">
-          <li><strong>Research Member</strong>, Health Informatics Research Lab (Sep 2023 — Mar 2025)</li>
-          <li><strong>Research Assistant</strong>, APURBA-DIU Research & Development Lab (Jul 2024 — Sep 2024)</li>
-        </ul>
+
+      <ul id="pub-list" class="mt-8 flex flex-col gap-4">
+        <li class="pub-item rounded-2xl border border-emerald-400/30 bg-emerald-500/5 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-200">Q1 Journal</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Elsevier</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Medical AI</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">Attention-driven deep object detection for improved gallbladder cancer diagnosis from ultrasound images</h3>
+            <p class="mt-2 text-sm text-slate-300">Engineering Applications of Artificial Intelligence, 2026 · <a href="https://doi.org/10.1016/j.engappai.2026.114757" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Presents an attention-driven deep object detection framework for improved gallbladder cancer diagnosis from ultrasound images, enhancing detection performance in medical imaging.</p>
+        </li>
+
+        <li class="pub-item rounded-2xl border border-emerald-400/30 bg-emerald-500/5 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-200">Q1 Journal</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Elsevier</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Graph Neural Network</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">A region-of-interest embedded graph neural architecture for gallbladder cancer detection</h3>
+            <p class="mt-2 text-sm text-slate-300">Results in Engineering, 2025 · <a href="https://doi.org/10.1016/j.rineng.2025.104624" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Introduces a region-of-interest embedded Graph Neural Network for gallbladder cancer detection from ultrasound images, focusing on medical imaging interpretability.</p>
+        </li>
+
+        <li class="pub-item rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">Conference</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">IEEE</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">An Efficient Framework for Transliteration Sentence Identification of Low Resource Languages Using Hybrid BERT-BiGRU</h3>
+            <p class="mt-2 text-sm text-slate-300">ICCCNT, 2024 · <a href="https://ieeexplore.ieee.org/document/10725039" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Proposes an efficient framework to identify transliterated sentences in multilingual contexts using linguistic and statistical features.</p>
+        </li>
+
+        <li class="pub-item collapsible extra-pub rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">Conference</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">IEEE</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Explainable AI</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">Integrating Explainable AI and Machine Learning for Superior Brain Tumor MRI Classification</h3>
+            <p class="mt-2 text-sm text-slate-300">IEEE Conference, 2025 · <a href="https://ieeexplore.ieee.org/document/11172202" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Proposes an explainable AI framework for brain tumor classification using MRI data, combining machine learning models with feature extraction techniques to improve interpretability and diagnostic accuracy.</p>
+        </li>
+
+        <li class="pub-item collapsible extra-pub rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">Conference</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">IEEE</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">NLP</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">Sentiment Analysis of Israel-Palestine Conflict Comments Using Sentiment Intensity Analyzer and TextBlob</h3>
+            <p class="mt-2 text-sm text-slate-300">ICCCNT, 2024 · <a href="https://ieeexplore.ieee.org/document/10724497" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Analyzed 4.36 lakh Reddit posts using NLP methods; achieved 92.74% accuracy and identified key geopolitical stance trends.</p>
+        </li>
+
+        <li class="pub-item collapsible extra-pub rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">Conference</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">IEEE</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Deep Learning</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">NewsNet: A Comprehensive Neural Network Hybrid Model for Efficient Bangla News Categorization</h3>
+            <p class="mt-2 text-sm text-slate-300">ICCCNT, 2024 · <a href="https://ieeexplore.ieee.org/document/10725173" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Developed a deep learning model combining CNN and BiLSTM for multiclass Bangla news categorization, achieving 94.57% accuracy and outperforming existing approaches on the Kaggle Bangla Newspaper Dataset.</p>
+        </li>
+
+        <li class="pub-item collapsible extra-pub rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+          <button class="pub-trigger w-full text-left">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">Conference</span>
+              <span class="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] text-slate-200">Springer</span>
+            </div>
+            <h3 class="text-base md:text-lg font-semibold">Impact of Lifestyle on Career: A Review</h3>
+            <p class="mt-2 text-sm text-slate-300">Intelligent Computing and Optimization, 2023 · <a href="https://ieeexplore.ieee.org/document/10725173" class="text-cyan-300 hover:text-cyan-200">View Paper</a></p>
+          </button>
+          <p class="abstract text-sm text-slate-300">Reviewed 50+ studies exploring how lifestyle choices influence career outcomes, highlighting that healthier habits enhance productivity, work ability, and overall career success.</p>
+        </li>
+      </ul>
+
+      <div class="mt-6 text-center">
+        <button id="show-more-pubs" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:border-cyan-400/40 hover:text-cyan-200 transition">Show More</button>
       </div>
-    </div>
+    </section>
 
-    <h3 class="mt-6 font-semibold">Skills</h3>
-    <p class="text-slate-400">Python, ML (CNN, GNN), Data Analysis, LaTeX, Git</p>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="mt-12 py-8 border-t border-slate-800">
-    <h2 class="text-2xl font-bold mb-4">Projects</h2>
-    <div id="project-list" class="space-y-6">
-      <!-- Visible projects -->
-      <article class="p-4 bg-slate-800 rounded-lg">
-        <h3 class="font-semibold">Simultaneous Histopathology Image Segmentation and Classification with EBHI-Seg Dataset</h3>
-        <p class="text-slate-400 mt-1">Performed simultaneous segmentation and classification on 4,456 EBHI-Seg images using deep learning to identify six differentiation stages.</p>
-        <p class="text-sm mt-2"><a href="https://github.com/saifoff/Colorectal_segcal" class="text-teal-300">View on GitHub</a></p>
-      </article>
-
-
-      <article class="p-4 bg-slate-800 rounded-lg">
-        <h3 class="font-semibold">Lifestyle Analysis</h3>
-        <p class="text-slate-400 mt-1">Exploring wellbeing, achievements and social connections using Python.</p>
-        <p class="text-sm mt-2"><a href="https://github.com/saifoff/lifestyle_analysis" class="text-teal-300">View on GitHub</a></p>
-      </article>
-
-      <!-- Hidden projects -->
-      <article class="p-4 bg-slate-800 rounded-lg hidden extra-project">
-        <h3 class="font-semibold">YouTube Trend Analyzer</h3>
-        <p class="text-slate-400 mt-1">Flask app for analyzing YouTube trending videos with engagement metrics and AI-powered content suggestions using Google Gemini.</p>
-        <p class="text-sm mt-2"><a href="https://github.com/saifoff/trend_analyzer" class="text-teal-300">View on GitHub</a></p>
-      </article>
-      
-    </div>
-
-    <div class="mt-4 text-center">
-      <button id="show-more-projects" class="px-4 py-2 bg-teal-500 text-slate-900 rounded-md">Show More</button>
-    </div>
-  </section>
-
-<!-- PUBLICATIONS -->
-<section id="publications" class="mt-12 py-8 border-t border-slate-800">
-  <h2 class="text-2xl font-bold mb-4">Publications</h2>
-  <ul id="pub-list" class="text-slate-300 space-y-4">
-    <!-- Visible Publications -->
-
-    <li class="pub-item">
-      <div class="cursor-pointer">
-        <strong>Attention-driven deep object detection for improved gallbladder cancer diagnosis from ultrasound images</strong> <br>
-        <span class="text-slate-400">Engineering Applications of Artificial Intelligence (Elsevier Q-1 Journal), 2026</span> —
-        <a href="https://doi.org/10.1016/j.engappai.2026.114757" class="text-teal-300">View Paper</a>
+    <section id="contact" class="reveal mt-16 border-t border-slate-800/90 pt-14">
+      <div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-7">
+        <h2 class="text-3xl font-semibold tracking-tight">Contact</h2>
+        <p class="mt-3 max-w-2xl text-slate-300">
+          Open to Machine Learning Engineering, Research Internship, and collaborative medical AI opportunities. Feel free to reach out for research discussions, project collaborations, or role opportunities.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          <a href="mailto:saifulttnn@gmail.com" class="rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-cyan-300 transition">Email</a>
+          <a href="https://github.com/saifoff" target="_blank" class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400/40 hover:text-cyan-200 transition">GitHub</a>
+          <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400/40 hover:text-cyan-200 transition">LinkedIn</a>
+          <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400/40 hover:text-cyan-200 transition">ResearchGate</a>
+        </div>
       </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Presents an attention-driven deep object detection framework for improved gallbladder cancer diagnosis from ultrasound images, enhancing detection performance in medical imaging.
-      </p>
-    </li>
-    
-    <li class="pub-item">
-      <div class="cursor-pointer">
-        <strong>A region-of-interest embedded graph neural architecture for gallbladder cancer detection</strong> <br>
-        <span class="text-slate-400">Results in Engineering (Elsevier Q-1 Journal), 2025</span> —
-        <a href="https://doi.org/10.1016/j.rineng.2025.104624" class="text-teal-300">View Paper</a>
-      </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Introduces a region-of-interest embedded Graph Neural Network for gallbladder cancer detection from ultrasound images, focusing on medical imaging interpretability.
-      </p>
-    </li>
+    </section>
+  </main>
 
-    <li class="pub-item">
-      <div class="cursor-pointer">
-        <strong>An Efficient Framework for Transliteration Sentence Identification of Low Resource Languages Using Hybrid BERT-BiGRU</strong> <br>
-        <span class="text-slate-400">ICCCNT (IEEE Conference), 2024</span> —
-        <a href="https://ieeexplore.ieee.org/document/10725039" class="text-teal-300">View Paper</a>
-      </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Proposes an efficient framework to identify transliterated sentences in multilingual contexts using linguistic and statistical features.
-      </p>
-    </li>
+  <footer class="border-t border-slate-900 py-8 text-center text-sm text-slate-500">
+    © <span id="year"></span> Saiful Islam · Machine Learning Engineer & Researcher · <a href="#home" class="underline hover:text-slate-300 transition">Back to top</a>
+  </footer>
 
-    <!-- Hidden Publications -->
-<li class="pub-item hidden extra-pub">
-  <div class="cursor-pointer">
-    <strong>Integrating Explainable AI and Machine Learning for Superior Brain Tumor MRI Classification</strong> <br>
-    <span class="text-slate-400">IEEE Conference, 2025</span> —
-    <a href="https://ieeexplore.ieee.org/document/11172202" class="text-teal-300">View Paper</a>
-  </div>
-  <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-    Proposes an explainable AI framework for brain tumor classification using MRI data, combining machine learning models with feature extraction techniques to improve interpretability and diagnostic accuracy.
-  </p>
-</li>
-    
-    <li class="pub-item hidden extra-pub">
-      <div class="cursor-pointer">
-        <strong>Sentiment Analysis of Israel-Palestine Conflict Comments Using Sentiment Intensity Analyzer and TextBlob</strong> <br>
-        <span class="text-slate-400">ICCCNT (IEEE Conference), 2024</span> —
-        <a href="https://ieeexplore.ieee.org/document/10724497" class="text-teal-300">View Paper</a>
-      </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Analyzed 4.36 lakh Reddit posts using NLP methods; achieved 92.74% accuracy and identified key geopolitical stance trends.
-      </p>
-    </li>
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    const navbar = document.getElementById("navbar");
 
-    <li class="pub-item hidden extra-pub">
-      <div class="cursor-pointer">
-        <strong>NewsNet: A Comprehensive Neural Network Hybrid Model for Efficient Bangla News Categorization</strong> <br>
-        <span class="text-slate-400">ICCCNT (IEEE Conference), 2024</span> —
-        <a href="https://ieeexplore.ieee.org/document/10725173" class="text-teal-300">View Paper</a>
-      </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Developed a deep learning model combining CNN and BiLSTM for multiclass Bangla news categorization, achieving 94.57% accuracy and outperforming existing approaches on the Kaggle Bangla Newspaper Dataset.
-      </p>
-    </li>
-
-    <li class="pub-item hidden extra-pub">
-      <div class="cursor-pointer">
-        <strong>Impact of Lifestyle on Career: A Review</strong> <br>
-        <span class="text-slate-400">Intelligent Computing and Optimization (Springer Conference), 2023</span> —
-        <a href="https://ieeexplore.ieee.org/document/10725173" class="text-teal-300">View Paper</a>
-      </div>
-      <p class="pub-desc hidden text-sm text-slate-400 mt-2">
-        Reviewed 50+ studies exploring how lifestyle choices influence career outcomes, highlighting that healthier habits enhance productivity, work ability, and overall career success.
-      </p>
-    </li>
-  </ul>
-
-  <div class="mt-4 text-center">
-    <button id="show-more-pubs" class="px-4 py-2 bg-teal-500 text-slate-900 rounded-md">Show More</button>
-  </div>
-</section>
-
-<script>
-  // Show more projects
-  document.getElementById("show-more-projects").addEventListener("click", function () {
-    document.querySelectorAll(".extra-project").forEach(el => el.classList.toggle("hidden"));
-    this.textContent = this.textContent === "Show More" ? "Show Less" : "Show More";
-  });
-
-  // Show more publications
-  document.getElementById("show-more-pubs").addEventListener("click", function () {
-    document.querySelectorAll(".extra-pub").forEach(el => el.classList.toggle("hidden"));
-    this.textContent = this.textContent === "Show More" ? "Show Less" : "Show More";
-  });
-
-  // Expand/collapse publication descriptions
-  document.querySelectorAll(".pub-item").forEach(item => {
-    item.querySelector("div").addEventListener("click", () => {
-      item.querySelector(".pub-desc").classList.toggle("hidden");
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("hidden");
     });
-  });
-</script>
 
-  <!-- CONTACT -->
-  <section id="contact" class="mt-12 py-8 border-t border-slate-800 mb-16">
-    <h2 class="text-2xl font-bold mb-4">Contact</h2>
-    <p class="text-slate-400">
-      Email me at <a href="mailto:saifulttnn@gmail.com" class="text-teal-300">saifulttnn@gmail.com</a> or connect on LinkedIn / GitHub.
-    </p>
-
-    <div class="mt-6 flex gap-2.5">
-      <a href="https://github.com/saifoff" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">GitHub</a>
-      <a href="https://www.linkedin.com/in/saiful-islam-7133751b0/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">LinkedIn</a>
-      <a href="https://www.facebook.com/saif.6053/" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">Facebook</a>
-      <a href="https://www.researchgate.net/profile/Saiful-Islam-147" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-700 text-sm">ResearchGate</a>
-    </div>
-  </section>
-</main>
-
-<footer class="text-center py-6 text-slate-500">
-  © <span id="year"></span> Saiful Islam — Turning data into insight • <a href="#home" class="underline">Top</a>
-</footer>
-
-<script>
-  // Footer year
-  document.getElementById('year').innerText = new Date().getFullYear();
-
-  // Navbar scroll effect
-  const navbar = document.querySelector("nav");
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("nav-scrolled", window.scrollY > 50);
-  });
-
-  // Mobile menu toggle
-  const menuBtn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
-
-  menuBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent immediate close
-    menu.classList.toggle("hidden");
-  });
-
-  // Close mobile menu when clicking a link
-  document.querySelectorAll('#menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 768) menu.classList.add('hidden');
+    document.querySelectorAll("#menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 768) menu.classList.add("hidden");
+      });
     });
-  });
 
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-      menu.classList.add("hidden");
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.add("hidden");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("nav-elevated", window.scrollY > 20);
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+    function toggleCollapsible(items, button) {
+      const isOpening = button.dataset.expanded !== "true";
+      items.forEach((item) => {
+        if (isOpening) {
+          item.style.display = "block";
+          requestAnimationFrame(() => item.classList.add("open"));
+        } else {
+          item.classList.remove("open");
+          setTimeout(() => {
+            if (!item.classList.contains("open")) item.style.display = "none";
+          }, 260);
+        }
+      });
+      button.dataset.expanded = String(isOpening);
+      button.textContent = isOpening ? "Show Less" : "Show More";
     }
-  });
-</script>
 
+    document.getElementById("show-more-projects").addEventListener("click", function () {
+      toggleCollapsible(document.querySelectorAll(".extra-project"), this);
+    });
+
+    document.getElementById("show-more-pubs").addEventListener("click", function () {
+      toggleCollapsible(document.querySelectorAll(".extra-pub"), this);
+    });
+
+    document.querySelectorAll(".pub-item").forEach((item) => {
+      const trigger = item.querySelector(".pub-trigger");
+      const abstract = item.querySelector(".abstract");
+      trigger.addEventListener("click", () => {
+        const isOpen = abstract.classList.contains("open");
+        if (isOpen) {
+          abstract.style.maxHeight = "0px";
+          abstract.classList.remove("open");
+        } else {
+          abstract.classList.add("open");
+          abstract.style.maxHeight = abstract.scrollHeight + 12 + "px";
+        }
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
